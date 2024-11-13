@@ -1,0 +1,651 @@
+{
+	"info": {
+		"_postman_id": "01467017-e74e-416c-9213-3a56ab19bc22",
+		"name": "LATAM UAT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SF Access token API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "94bb9667-4143-4945-acaa-4d513b53000e",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"Accesstoken\", jsonData.access_token);\r",
+							"pm.collectionVariables.set(\"url\",jsonData.instance_url);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "5c7673d4-ef45-4f77-ac20-2064bb6b33a0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"followAuthorizationHeader": false,
+				"followRedirects": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_secret",
+							"value": "2660DA290B33C355CAA0FD31E9FC89D547D0AEFA8D637C423C2040C458346504",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "3MVG9rrOVHA54N6Oi03SmcudCK3aQE_.yl6M2ZUWUe8WXMBVY.Rbyej4MovZVcJjj.YVWsWzrDKmzP0HWnei8",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "roche_api_user@roche_nala2_uat.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Roc@Cuat2",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": "https://roche-nala2-oce--uat.sandbox.my.salesforce.com/services/oauth2/token"
+			},
+			"response": []
+		},
+		{
+			"name": "SF Access token API Copy 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "94bb9667-4143-4945-acaa-4d513b53000e",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"Accesstoken\", jsonData.access_token);\r",
+							"pm.collectionVariables.set(\"url\",jsonData.instance_url);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "d4d63062-2680-4788-86d5-8df3408e2d5c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"followAuthorizationHeader": false,
+				"followRedirects": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_secret",
+							"value": "1B32E83EB60CA4BCBE0F863C3357A78BE8D69E3F9CE2ABE1AF2DBAA7B070F4CF",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "3MVG96Vhuar0sPRohJdGNhFa4G1DLA.GLyZ7QL8z6Z_zAvi1mdd8piJR8YudQKvvFRXu850GL4H5ZD3sPH8jn",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "oceoptimizer@roche-latam-oce.com.uat",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Roche1234",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": "https://roche-nala2-oce--uat.sandbox.my.salesforce.com/services/oauth2/token"
+			},
+			"response": []
+		},
+		{
+			"name": "Lexi Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1f754a72-4d0c-4030-b515-6dac84a440c7",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"lexiapikey\", jsonData.lexiApiKey);\r",
+							"pm.collectionVariables.set(\"lexi-refresh-token\",jsonData.refresh);\r",
+							"pm.collectionVariables.set(\"lexitoken\", jsonData.token);\r",
+							"pm.collectionVariables.set(\"url2\", jsonData.url);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "68fc59c3-a8ba-411d-b1ee-7c2ee8614ab2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{Accesstoken}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}/services/apexrest/OCEO/api/v1/lexitoken"
+			},
+			"response": []
+		},
+		{
+			"name": "OCE Sync Pull OCE Accounts Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5209049f-4c7a-46da-8afe-d1bf33623036",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"JOB_ID\", jsonData.JobId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "751515d4-370f-4d93-91b2-27481bbd8778",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{lexitoken}}",
+						"type": "text"
+					},
+					{
+						"key": "refreshtoken",
+						"value": "{{lexi-refresh-token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "{{lexiapikey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Type\": \"OCESYNC\",\r\n   \r\n    \"Parameters\": {\r\n        \"TerritoryRenameAllowed\": true,\r\n        \"SalesForceExclusionOverTerrExplicit\": true,\r\n        \"RuleEngineEnabled\": true,\r\n        \"PopulateUserManager\": true,\r\n        \"OptimizerEngineName\": null,\r\n        \"OCEPersonalGeographyTypeMapping\": \"GEO1/BrickToTerritory\",\r\n        \"OCEAdditionalTables\": null,\r\n        \"NewLayouts\": true,\r\n        \"MaxExportRowsPerCallout\": 1000,\r\n        \"MaxExportCalloutsPerTransaction\": 20,\r\n        \"MapUserAddressTypes\": \"HOME\",\r\n        \"LookupMaximumSearchRows\": 50,\r\n        \"LookupMaximumRecentRows\": 5,\r\n        \"IncludeCompetitorSales\": false,\r\n        \"InactivateUncalledUserCreatedAlignment\": 180,\r\n        \"InactivateAccountsDeletedinOCESales\": true,\r\n        \"GeographyMetric8\": null,\r\n        \"GeographyMetric7\": null,\r\n        \"GeographyMetric6\": null,\r\n        \"GeographyMetric5\": null,\r\n        \"GeographyMetric4\": null,\r\n        \"GeographyMetric3\": null,\r\n        \"GeographyMetric2\": null,\r\n        \"GeographyMetric1\": null,\r\n        \"FieldTitleValidation\": \"User-Territory\",\r\n        \"FTVForPrimaryAssignmentOnly\": true,\r\n        \"ExplicitAccountTerritoryAlignment\": true,\r\n        \"EtmTerritoryTypeName\": \"TERR\",\r\n        \"EtmTerritoryModelName\": \"ETMInitialModel\",\r\n        \"EnableTransactionDateAlignment\": false,\r\n        \"DaysPastUserEndDate\": 99999,\r\n        \"DaysPastUserEdit\": 99999,\r\n        \"DaysPastUserDelete\": 99999,\r\n        \"DaysPastUserAssignmentEndDate\": 99999,\r\n        \"DaysPastUserAssignmentEdit\": 99999,\r\n        \"DaysPastUserAssignmentDelete\": 99999,\r\n        \"DaysPastUserAssignmentAdd\": 99999,\r\n        \"DaysPastUserAdd\": 99999,\r\n        \"DaysPastTerritoryEndDate\": 99999,\r\n        \"DaysPastTerritoryEdit\": 99999,\r\n        \"DaysPastTerritoryDelete\": 99999,\r\n        \"DaysPastTerritoryAdd\": 99999,\r\n        \"DaysPastSalesForceEndDate\": 99999,\r\n        \"DaysPastSalesForceEdit\": 99999,\r\n        \"DaysPastSalesForceDelete\": 99999,\r\n        \"DaysPastSalesForceAdd\": 99999,\r\n        \"DaysPastRegionEndDate\": 99999,\r\n        \"DaysPastRegionEdit\": 99999,\r\n        \"DaysPastRegionDelete\": 99999,\r\n        \"DaysPastRegionAdd\": 99999,\r\n        \"DaysPastProductEndDate\": 99999,\r\n        \"DaysPastProductEdit\": 99999,\r\n        \"DaysPastProductDelete\": 99999,\r\n        \"DaysPastProductAlignmentEndDate\": 99999,\r\n        \"DaysPastProductAlignmentEdit\": 365,\r\n        \"DaysPastProductAlignmentDelete\": 99999,\r\n        \"DaysPastProductAlignmentAdd\": 99999,\r\n        \"DaysPastProductAdd\": 99999,\r\n        \"DaysPastGeographyEndDate\": 99999,\r\n        \"DaysPastGeographyEdit\": 99999,\r\n        \"DaysPastGeographyDelete\": 99999,\r\n        \"DaysPastGeographyAlignmentEndDate\": 99999,\r\n        \"DaysPastGeographyAlignmentEdit\": 365,\r\n        \"DaysPastGeographyAlignmentDelete\": 99999,\r\n        \"DaysPastGeographyAlignmentAdd\": 99999,\r\n        \"DaysPastGeographyAdd\": 99999,\r\n        \"DaysPastAccountAlignmentEndDate\": 99999,\r\n        \"DaysPastAccountAlignmentEdit\": 365,\r\n        \"DaysPastAccountAlignmentDelete\": 99999,\r\n        \"DaysPastAccountAlignmentAdd\": 99999,\r\n        \"CalculateMaps\": true,\r\n        \"AutoPurgeReportExportFiles\": true,\r\n        \"AutoPurgeReportExportFilesWaitDays\": 30,\r\n        \"AutoGenerateUID\": true,\r\n        \"ApolloUI\": false,\r\n        \"AllowMultiplePrimaryUserAssignments\": false,\r\n        \"AllowForGlobalProducts\": false,\r\n        \"AllowDuplicateTerritoryName\": false,\r\n        \"AdjudicationWarning2IndicatorColor\": \"#ba0517\",\r\n        \"AdjudicationWarning1IndicatorColor\": \"#FFA500\",\r\n        \"AccountTerritoryPrecedence\": \"SecondOneWins\",\r\n        \"AccountTerritoryAlignmentPrecedence\": false,\r\n        \"AccountMetric8\": null,\r\n        \"AccountMetric7\": null,\r\n        \"AccountMetric6\": null,\r\n        \"AccountMetric5\": null,\r\n        \"AccountMetric4\": null,\r\n        \"AccountMetric3\": null,\r\n        \"AccountMetric2\": null,\r\n        \"AccountMetric1\": null\r\n    },\r\n    \"Mode\": \"OCE_LEXI\",\r\n    \"Subtype\": \"PULL_ACCOUNT\",\r\n    \"StartFrom\":\"1970-10-28T00:00:00.0Z\"\r\n}"
+				},
+				"url": "{{url2}}/latest/ocesync"
+			},
+			"response": []
+		},
+		{
+			"name": "OCE Sync publish othr OMR Data Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "313ef918-b9b3-4a07-8411-b72f15eba6a6",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"JOB_ID\", jsonData.JobId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "3ff1747c-7ce3-4560-98e2-6fe3e31ae2fa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{lexitoken}}",
+						"type": "text"
+					},
+					{
+						"key": "refreshtoken",
+						"value": "{{lexi-refresh-token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "{{lexiapikey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Type\": \"OCESYNC\"  ,\r\n    \"Subtype\": \"PUBLISH_OTHER_OMR_DATA\",\r\n    \"Mode\": \"OCE_LEXI\",\r\n    \"StartFrom\": \"1900-01-01T00:00:00.000Z\",\r\n    \"Parameters\": {\r\n        \"EtmTerritoryModelName\": \"ETMInitialModel\",\r\n        \"EtmTerritoryTypeName\": \"TERR\",\r\n        \"RuleEngineEnabled\": \"true\",\r\n        \"PopulateUserManager\": \"true\",\r\n        \"OCEPersonalGeographyTypeMapping\": \"GEO1/BrickToTerritory\"\r\n    }\r\n}"
+				},
+				"url": "{{url2}}/20-6/ocesync"
+			},
+			"response": []
+		},
+		{
+			"name": "Sync OMR Copy 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d52b493a-0c9c-4731-bdf9-e3c210bcc5d7",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.globals.set(\"jobid\", jsonData.id);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "9e1778a2-5a19-4e39-b30e-29a3ee9e1ed3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{lexitoken}}",
+						"type": "text"
+					},
+					{
+						"key": "refreshtoken",
+						"value": "{{lexi-refresh-token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "{{lexiapikey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n {\r\n\"StartFrom\": \"2000-02-11T00:00:00.0Z\",\r\n\"Parameters\": {\r\n\r\n    \"SyncAll\": \"true\"\r\n}\r\n\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url2}}/latest/sync"
+			},
+			"response": []
+		},
+		{
+			"name": "Nightly Recalc Copy 2",
+			"id": "d0a88f8a-56bc-41de-89b3-cca628aa2a8a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{lexitoken}}"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{lexitoken}}",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "{{lexiapikey}}",
+						"type": "text"
+					},
+					{
+						"key": "refreshtoken",
+						"value": "{{lexi-refresh-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Type\": \"RECALC\",\r\n\r\n    \"Parameters\": {\r\n        \"TerritoryRenameAllowed\": false,\r\n        \"SalesForceExclusionOverTerrExplicit\": true,\r\n        \"RuleEngineEnabled\": true,\r\n        \"PopulateUserManager\": true,\r\n        \"OptimizerEngineName\": null,\r\n        \"OCEPersonalGeographyTypeMapping\": \"GEO1/BrickToTerritory\",\r\n        \"OCEAdditionalTables\": null,\r\n        \"NewLayouts\": true,\r\n        \"MaxExportRowsPerCallout\": 1000,\r\n        \"MaxExportCalloutsPerTransaction\": 20,\r\n        \"MapUserAddressTypes\": \"HOME\",\r\n        \"LookupMaximumSearchRows\": 50,\r\n        \"LookupMaximumRecentRows\": 5,\r\n        \"IncludeCompetitorSales\": false,\r\n        \"InactivateUncalledUserCreatedAlignment\": 180,\r\n        \"InactivateAccountsDeletedinOCESales\": true,\r\n        \"GeographyMetric8\": null,\r\n        \"GeographyMetric7\": null,\r\n        \"GeographyMetric6\": null,\r\n        \"GeographyMetric5\": null,\r\n        \"GeographyMetric4\": null,\r\n        \"GeographyMetric3\": null,\r\n        \"GeographyMetric2\": null,\r\n        \"GeographyMetric1\": null,\r\n        \"FieldTitleValidation\": \"User-Territory\",\r\n        \"FTVForPrimaryAssignmentOnly\": true,\r\n        \"ExplicitAccountTerritoryAlignment\": true,\r\n        \"EtmTerritoryTypeName\": \"TERR\",\r\n        \"EtmTerritoryModelName\": \"ETMInitialModel\",\r\n        \"EnableTransactionDateAlignment\": false,\r\n        \"DaysPastUserEndDate\": 99999,\r\n        \"DaysPastUserEdit\": 99999,\r\n        \"DaysPastUserDelete\": 99999,\r\n        \"DaysPastUserAssignmentEndDate\": 99999,\r\n        \"DaysPastUserAssignmentEdit\": 99999,\r\n        \"DaysPastUserAssignmentDelete\": 99999,\r\n        \"DaysPastUserAssignmentAdd\": 99999,\r\n        \"DaysPastUserAdd\": 99999,\r\n        \"DaysPastTerritoryEndDate\": 99999,\r\n        \"DaysPastTerritoryEdit\": 99999,\r\n        \"DaysPastTerritoryDelete\": 99999,\r\n        \"DaysPastTerritoryAdd\": 99999,\r\n        \"DaysPastSalesForceEndDate\": 99999,\r\n        \"DaysPastSalesForceEdit\": 99999,\r\n        \"DaysPastSalesForceDelete\": 99999,\r\n        \"DaysPastSalesForceAdd\": 99999,\r\n        \"DaysPastRegionEndDate\": 99999,\r\n        \"DaysPastRegionEdit\": 99999,\r\n        \"DaysPastRegionDelete\": 99999,\r\n        \"DaysPastRegionAdd\": 99999,\r\n        \"DaysPastProductEndDate\": 99999,\r\n        \"DaysPastProductEdit\": 99999,\r\n        \"DaysPastProductDelete\": 99999,\r\n        \"DaysPastProductAlignmentEndDate\": 99999,\r\n        \"DaysPastProductAlignmentEdit\": 365,\r\n        \"DaysPastProductAlignmentDelete\": 99999,\r\n        \"DaysPastProductAlignmentAdd\": 99999,\r\n        \"DaysPastProductAdd\": 99999,\r\n        \"DaysPastGeographyEndDate\": 99999,\r\n        \"DaysPastGeographyEdit\": 99999,\r\n        \"DaysPastGeographyDelete\": 99999,\r\n        \"DaysPastGeographyAlignmentEndDate\": 99999,\r\n        \"DaysPastGeographyAlignmentEdit\": 365,\r\n        \"DaysPastGeographyAlignmentDelete\": 99999,\r\n        \"DaysPastGeographyAlignmentAdd\": 99999,\r\n        \"DaysPastGeographyAdd\": 99999,\r\n        \"DaysPastAccountAlignmentEndDate\": 99999,\r\n        \"DaysPastAccountAlignmentEdit\": 365,\r\n        \"DaysPastAccountAlignmentDelete\": 99999,\r\n        \"DaysPastAccountAlignmentAdd\": 99999,\r\n        \"CalculateMaps\": true,\r\n        \"AutoPurgeReportExportFiles\": true,\r\n        \"AutoPurgeReportExportFilesWaitDays\": 30,\r\n        \"AutoGenerateUID\": true,\r\n        \"ApolloUI\": false,\r\n        \"AllowMultiplePrimaryUserAssignments\": false,\r\n        \"AllowForGlobalProducts\": false,\r\n        \"AllowDuplicateTerritoryName\": false,\r\n        \"AdjudicationWarning2IndicatorColor\": \"#ba0517\",\r\n        \"AdjudicationWarning1IndicatorColor\": \"#FFA500\",\r\n        \"AccountTerritoryPrecedence\": \"SecondOneWins\",\r\n        \"AccountTerritoryAlignmentPrecedence\": false,\r\n        \"AccountMetric8\": null,\r\n        \"AccountMetric7\": null,\r\n        \"AccountMetric6\": null,\r\n        \"AccountMetric5\": null,\r\n        \"AccountMetric4\": null,\r\n        \"AccountMetric3\": null,\r\n        \"AccountMetric2\": null,\r\n        \"AccountMetric1\": null\r\n    }\r\n    \r\n\r\n}"
+				},
+				"url": "{{url2}}/{{APIversion}}/recalc"
+			},
+			"response": []
+		},
+		{
+			"name": "OData Call",
+			"id": "6c8de363-c32e-46d5-9d4b-3bd5e207e039",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{lexitoken}}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{lexiapikey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url2}}/latest/odata/{{tenantid}}/ROC_FIELD_ROSTER_API__c?\n\n",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"latest",
+						"odata",
+						"{{tenantid}}",
+						"ROC_FIELD_ROSTER_API__c"
+					],
+					"query": [
+						{
+							"key": "\n\n",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OData Call Copy",
+			"id": "40114110-6b6a-4208-886e-c95337bbd306",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{lexitoken}}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "{{lexiapikey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url2}}/latest/odata/{{tenantid}}/ROC_FIELD_ROSTER_API__c?\n\n",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"latest",
+						"odata",
+						"{{tenantid}}",
+						"ROC_FIELD_ROSTER_API__c"
+					],
+					"query": [
+						{
+							"key": "\n\n",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SFDC API GET Call",
+			"id": "1273e6b8-14be-4ebf-99a2-0e1ab364ad11",
+			"protocolProfileBehavior": {
+				"followAuthorizationHeader": false,
+				"followRedirects": true,
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Accesstoken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/services/data/v52.0/query?q=SELECT Name,OCEO__City__c FROM OCEO__OMTerritory__c&$top=5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"services",
+						"data",
+						"v52.0",
+						"query"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "SELECT Name,OCEO__City__c FROM OCEO__OMTerritory__c"
+						},
+						{
+							"key": "$top",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OCE Sync Publish Cus Align Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a992c175-9ea4-4b2b-886b-fff74b0ae4dd",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"JOB_ID\", jsonData.JobId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "d27a4e41-1355-4497-b903-cadb9705e060",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{lexitoken}}",
+						"type": "text"
+					},
+					{
+						"key": "refreshtoken",
+						"value": "{{lexi-refresh-token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "{{lexiapikey}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Type\": \"OCESYNC\",\r\n\r\n    \"JobType\": \"OCESYNC-PUBLISH_CUSTOMER_ALIGNMENT\",\r\n  \r\n    \"Subtype\": \"PUBLISH_CUSTOMER_ALIGNMENT\",\r\n    \"Mode\": \"OCE_LEXI\",\r\n    \"StartFrom\": \"2024-06-17T04:37:43.649Z\",\r\n \r\n    \"Parameters\": {\r\n        \"RuleEngineEnabled\": \"true\"\r\n    }\r\n  \r\n}"
+				},
+				"url": "{{url2}}/20-4/ocesync"
+			},
+			"response": []
+		},
+		{
+			"name": "RefreshSchema Copy 2",
+			"id": "4e1fd35a-798e-4157-8759-f5aae269768c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{lexitoken}}"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "{{lexiapikey}}",
+						"type": "text"
+					}
+				],
+				"url": "{{url2}}/latest/odata/{{tenantid}}/RefreshSchema"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "91ec73d3-9130-481c-90c7-5dfece09da86",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "58e3475f-935e-4b07-9023-14d9a2325ae3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Accesstoken",
+			"value": ""
+		},
+		{
+			"key": "url",
+			"value": ""
+		},
+		{
+			"key": "lexiapikey",
+			"value": ""
+		},
+		{
+			"key": "lexi-refresh-token",
+			"value": ""
+		},
+		{
+			"key": "lexitoken",
+			"value": ""
+		},
+		{
+			"key": "url2",
+			"value": ""
+		},
+		{
+			"key": "tenantid",
+			"value": "6a8dfbfda0384db2a628563d57eda0d1",
+			"type": "string"
+		},
+		{
+			"key": "JOB_ID",
+			"value": ""
+		}
+	]
+}
